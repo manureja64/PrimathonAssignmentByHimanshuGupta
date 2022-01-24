@@ -1,0 +1,137 @@
+* {
+    font-family: 'Ubuntu', sans-serif;
+    
+    /* font-family: cursive; */
+    /* background-color: coral; */
+    -youbkit-touch-callout: none; /* iOS Safari */
+    -youbkit-user-select: none;   /* Chrome 6.0+, Safari 3.1+, Edge & Opera 15+ */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;        /* IE 10+ and Edge */
+    user-select: none;            /* Non-prefixed version,
+                                currently supported by Chrome and Opera */
+}
+/* -youbkit-touch-callout: none;
+-youbkit-user-select: none;  
+-moz-user-select: none;    
+-ms-user-select: none;       
+user-select: none;            */
+/* Prevent text selection of an <body> element in all major browsers */
+
+/* Navigation Bar */
+#navbar{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    justify-content: space-between; 
+    background-color: black;
+    border-radius: 0px;
+    font-size: 18px;
+    padding: 4px 0px;
+    position: relative;
+}
+
+/* Navigation Bar: Logo and Image */
+#logo{
+  display: flex;
+  margin: 10px 0px;
+  font-family: 'Ubuntu', sans-serif;
+  font-size: 2rem;
+  text-decoration: none;
+  /* justify-items: center; */
+  /* justify-content: center; */
+
+}
+
+
+#navbar #logo a{
+  display: block;
+    padding: 3px 0px;
+    justify-content: center;
+    text-decoration: none;
+    color:burlywood;
+    font-family: 'Ubuntu', sans-serif;
+    /* font-family: 'Times New Roman', Times, serif; */
+    
+}
+#navbar #logo a:hover{
+    text-decoration: none;
+    color:burlywood;
+    /* background-color: white; */    
+}
+
+#navbar #logo #subject{
+  color: burlywood;
+  font-size: 1rem;
+}
+
+#navbar #logo #subject:hover{
+  color: blanchedalmond;
+  font-size: 1rem;
+}
+
+
+/* Navigation Bar: List Styling */
+#navbar ul{
+  display: flex;
+  margin: 0px;
+  align-items: center;
+  justify-items: center;
+  /* font-size: 1.5rem; */
+  /* justify-content: end; */
+    /* overflow: auto; */
+    margin: 0rem 0rem;
+
+}
+
+#navbar ul li{
+    /* display: flexbox; */
+    float:left;
+    list-style: none;
+    font-size: 1.5rem;
+    margin: 0.4rem 1.5rem;
+}
+
+#navbar ul li a{
+    padding: 3px 3px;
+    text-decoration: none;
+    color: white;
+    font-family: 'Times New Roman', Times, serif;
+    /* font-family: 'Source Code Pro', monospace; */
+
+}
+
+#navbar ul li a:hover{
+    color: #f00000;
+}
+
+/* .Notice {
+  display: block;
+} */
+.Disclaimer {
+  margin-top: 4rem;
+  margin-bottom: 0.1rem;
+  font-size: 1.1rem;
+  background-color: brown;
+  color: white;
+}
+
+.Copyrights {
+  /* display: flex; */
+  text-align: center;
+  align-content: center;
+  align-items: center;
+  justify-items: center;
+  margin: auto;
+  margin-top: 1rem;
+  margin-bottom: 0.1rem;
+  font-size: 1.1rem;
+  background-color: brown;
+  color: white;
+
+}
+
+
+/* -------------------------Body Background Color---------------
+body{
+  background-color: cornsilk;
+} */

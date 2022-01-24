@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/head');-%>
+    <%- include('layouts/header');-%>
+
+        <body>
+            <!-- Navigation-->
+            <%- include('layouts/navbar');-%>
+                <h1>
+                    <%= title %>
+                </h1>
+                <form action="" enctype="multipart/form-data" method="post">
+                    <input type="file" name="uploadfile"
+                        accept='application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel'>
+                    <input type="submit" value="Upload Excel">
+                </form>
+                <hr>
+
+
+        </body>
+
+        <script src="js/index.js"></script>
+
+</html>

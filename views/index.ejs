@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/headGoogleAdsense');-%>
+
+    <style>
+        .mainContent {
+            background-color: cornsilk;
+            font-family: Verdana, Geneva, Tahoma, sans-serif;
+        }
+
+        /* body {
+        background-color: cornsilk;
+    } */
+
+        #heading {
+            display: flex;
+            color: burlywood;
+            justify-content: center;
+            /* font-size: 2rem; */
+        }
+
+        #heading h1 {
+            font-size: 3rem;
+        }
+
+        #heading #subject {
+            font-size: 1.5rem;
+        }
+
+        .para {
+            font-size: 1.5rem;
+        }
+
+        .mainContent .link {
+            text-decoration: none;
+            color: blueviolet;
+            font-weight: bold;
+        }
+    </style>
+    <%- include('layouts/header');-%>
+
+        <body style="background-color: cornsilk;">
+
+
+            <div class="mainContent">
+
+
+                <!-- Navigation-->
+                <%- include('layouts/navbar');-%>
+                    <!-- <h1>Home Page</h1>
+            
+            <h2>This page lists tests</h2> -->
+                    <div id="heading">
+                        <h1>Gulzari</h1>
+                        <div id="subject">GK</div>
+                    </div>
+                    <div class="para">
+                        <p>Gulzari GK is a platform which provides government job aspirants in India, a free access to
+                            mock test
+                            papers
+                            for the General Awareness Section. Aspirants can start giving the mock tests without the
+                            need to
+                            register themselves and login. Start by taking a test by clicking <a class="link"
+                                href="/testTaker/tests">here.</a>
+
+                        </p>
+                    </div>
+            </div>
+            <br><br><br><br>
+        </body>
+        <%- include('layouts/footer');-%>
+
+            <script src="js/index.js"></script>
+
+</html>

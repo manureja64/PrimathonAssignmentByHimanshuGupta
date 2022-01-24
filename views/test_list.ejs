@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('layouts/head');-%>
+    <%- include('layouts/header');-%>
+        <style>
+            * {
+                margin: 0rem 0rem;
+                /* padding: 0rem 0rem; */
+            }
+
+            .detail {
+                font-size: 1.0rem;
+                display: flex;
+                justify-content: space-around;
+                color: sienna;
+                font-size: 0.95rem;
+                margin: 0.25rem 0rem;
+                padding: 0rem 0rem;
+            }
+
+            .field {
+                padding-right: 0.25rem;
+                font-weight: bold;
+            }
+
+            .value {
+                padding-left: 0.25rem;
+                font-style: italic;
+            }
+
+            .search_heading {
+                /* display: flex; */
+                justify-content: space-evenly;
+                text-align: center;
+                font-size: 1rem;
+                font-weight: bold;
+            }
+
+            .search {
+                display: flex;
+                justify-content: space-evenly;
+                margin: 0.105rem 0.25rem;
+                padding: 0.25rem 0rem;
+                border-top: 0.1rem solid;
+                border-bottom: 0.1rem solid;
+                font-size: 0.85rem;
+                font-weight: bold;
+            }
+
+            .attribute {
+                display: flex;
+                justify-content: space-between;
+            }
+
+            .note {
+                color: blue;
+                font-size: 0.8rem;
+                font-style: italic;
+            }
+        </style>
+
+        <body>
+            <!-- Navigation-->
+            <div class="detail">
+                <div class="attribute">
+                    <span class="field"> Class: </span>
+                    <!-- 'class1' is used instead of 'class' because 'class' is a RESERVED KEYWORD in CSS and Create PROBLEM in .ejs file -->
+
+                    <% if (class1==="0" ) { %>
+                        <span class="value"> All</span>
+
+                        <% } else { %>
+                            <span class="value">
+                                <%= class1 %>th
+                            </span>
+                            <% } %>
+                </div>
+                <div class="attribute"><span class="field">Subject:</span>
+                    <% if (subject==="0" ) { %>
+                        <span class="value">All</span>
+
+                        <% } else if (subject==="1" ) { %>
+                            <span class="value">Geography</span>
+
+                            <% } else if (subject==="2" ) { %>
+                                <span class="value">History</span>
+                                <% } else if (subject==="3" ) { %>
+                                    <span class="value">Civics</span>
+                                    <% } else if (subject==="4" ) { %>
+                                        <span class="value">Science</span>
+                                        <% } else if (subject==="5" ) { %>
+                                            <span class="value">Economics</span>
+                                            <% } else { %>
+                                                <span class="value">None</span>
+                                                <% } %>
+                </div>
+                <div class="attribute"> <span class="field"> Chapter:</span>
+                    <% if (chapter==="0" ) { %>
+                        <span class="value">All</span>
+                        <% } else { %>
+                            <span class="value">
+                                <%= chapter %>
+                            </span>
+                            <% } %>
+                </div>
+            </div>
+            <div class="search_heading">
+                Search
+                <h4 class="note"> (Type appropriate values in the fields: 'Class', 'Subject' and 'Chapter' and click
+                    'Submit' to get a list of chapter-wise Notes having these attributes)</h4>
+
+            </div>
+
+            <div class="search">
+                <form action="" method='POST'>
+                    <div class="attribute">
+                        <span class="field">
+                            <label for="class">Class: </label></span>
+                        <span class="value">
+                            <select name="class" id="class">
+                                <option value="0" selected>All</option>
+                                <option value="6">VI</option>
+                                <option value="7">VII</option>
+                                <option value="8">VIII</option>
+                                <option value="9">IX</option>
+                                <option value="10">X</option>
+                                <option value="11">XI</option>
+                                <option value="12">XII</option>
+                            </select></span>
+                    </div>
+                    <div class="attribute">
+                        <span class="field">
+                            <label for="subject">Subject: </label>
+                        </span>
+                        <span class="value"><select name="subject" id="subject">
+                                <option value="0" selected>All</option>
+                                <option value="1">Geography</option>
+                                <option value="2">History</option>
+                                <option value="3">Civics</option>
+                                <option value="4">Science</option>
+                                <option value="5">Economics</option>
+                            </select></span>
+                    </div>
+                    <div class="attribute">
+                        <span class="field">
+                            <label for="chapter">Chapter (Type 0 (zero) to get ALL Chapters): </label>
+                        </span>
+                        <span class="value">
+                            <input type="number" name="chapter" id="chapter" value="0"></span>
+                    </div>
+
+                    <button type="submit">Submit</button>
+
+
+                </form>
+            </div>
+
+
+            <%- include('layouts/navbar');-%>
+                <h1>
+                    <%= title %>
+                </h1>
+                <ul>
+                    <% for( let i=test_list.length-1; i>=0; i-- ) { %>
+
+                        <li><a href="<%=test_list[i].url%>" target="_blank">
+                                <%- test_list[i].title %>
+                            </a> (Number of Options: <%= test_list[i].numOfOptions %>) </li> <br>
+
+                        <% } %>
+                            <%# test.forEach(test_list=> { %>
+                                <!-- <li><a href="test.url"><%#= test.title %> </a></li> -->
+
+                                <%# }) %>
+                                    <% if (test_list.length===0) { %>
+                                        <li>There are no tests</li>
+
+                                        <% } %>
+                </ul>
+
+        </body>
+
+        <script src="js/index.js"></script>
+
+</html>

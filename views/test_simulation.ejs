@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/headGoogleAdsense');-%>
+    <%- include('layouts/headerTestSimulation');-%>
+
+        <style>
+            body {
+                font-size: 1.4rem;
+            }
+
+            .heading {
+                display: flex;
+                justify-items: center;
+                font-size: 1.4rem;
+                /* justify-content: center; */
+
+            }
+
+            .heading .h1 {
+                font-size: 1.4rem;
+                font-weight: bold;
+                color: saddlebrown;
+            }
+
+            .heading .h2 {
+                font-size: 1.4rem;
+                padding: 0rem 0.5rem;
+                color: sienna;
+            }
+
+            .heading1 {
+                display: flex;
+                color: saddlebrown;
+
+                justify-content: space-between;
+                font-size: 1.1rem;
+                /* position: sticky; */
+                /* top: 0; */
+            }
+
+            .headingOther {
+                color: sienna;
+                padding: 0rem 0.5rem;
+            }
+
+            #timeLeft {
+
+                position: sticky;
+                top: 0;
+                right: 0;
+                margin: 1rem;
+                /* justify-content: center; */
+                text-align: center;
+                font-size: 1.1rem;
+                color: saddlebrown;
+                background-color: burlywood;
+                /* color: white; */
+            }
+
+            #timeLeft #t1 {
+                font-weight: bold;
+            }
+
+            .direction {
+                display: flex;
+                font-size: 1.5rem;
+                margin: 0rem;
+                padding: 0rem;
+                font-family: 'Times New Roman', Times, serif;
+            }
+
+            .direction #d1 {
+                font-size: 1.5rem;
+                color: saddlebrown;
+                margin: 0rem;
+                padding: 0rem;
+                font-family: 'Times New Roman', Times, serif;
+            }
+
+            .direction #d2 {
+                font-size: 1.5rem;
+                padding: 0rem 0.5rem;
+                color: chocolate;
+                font-family: 'Times New Roman', Times, serif;
+            }
+
+            .question {
+                color: saddlebrown;
+                font-size: 1rem;
+                font-family: 'Times New Roman', Times, serif;
+                margin-top: 1.2rem;
+                margin-bottom: 0rem;
+
+            }
+
+            .option {
+                font-size: 1.2rem;
+                color: chocolate;
+                font-family: 'Times New Roman', Times, serif;
+                /* margin: 0rem 0rem;
+                padding: 0rem 0rem; */
+                width: 90%;
+            }
+
+            .option:hover {
+                color: black;
+                background-color: burlywood;
+                width: 80%;
+                border: 2px none black;
+                border-radius: 0.5rem;
+            }
+
+            .sbutton {
+                background-color: burlywood;
+                border: 2px solid saddlebrown;
+                border-radius: 1rem;
+
+            }
+
+            /* 
+            .Disclaimer {
+                font-size: 1.1rem;
+                background-color: brown;
+                color: white;
+            } */
+
+            .Note {
+                padding: 0.2rem 0rem;
+                font-size: 1.1rem;
+                background-color: burlywood;
+            }
+        </style>
+
+        <body style="background-color: cornsilk;">
+            <!-- Navigation-->
+            <%- include('layouts/navbar');-%>
+
+
+
+
+                <div class="heading">
+                    <span class="h1"> Title: </span> <span class="h2">
+                        <%- test.title %>
+                    </span>
+                    </span>
+                </div>
+
+                <div class="heading1">
+                    <span class="headingOther"> Number of Options:
+                        <%= test.numOfOptions %>
+                    </span>
+
+                </div>
+                <div id="timeLeft"><span id="t1"> Time Left:</span> <span id="time">
+                        <%= test.duration %>
+                    </span></div>
+
+                <!-- <div class="Note">
+                    <span class="headingOther"> Note: Although this test doesn't display timer, the test will
+                        automatically submit after the test duration
+                    </span> -->
+
+                </div>
+
+                <ol>
+                    <form id="test" action="" method="POST">
+                        <% for( let i=0; i < direction.length; i++ ) { %>
+
+
+                            <p>
+                            <div class="direction">
+                                <span id="d1"> Direction:</span> <span id="d2">
+                                    <%- direction[i].direction %>
+                                </span>
+
+                            </div>
+
+                            <% for( let j=0; j < direction[i].question.length; j++ ) { %>
+                                <li class="question">
+
+                                    <label for="<%= direction[i].question[j]._id %>">
+                                        <%- direction[i].question[j].question %>
+                                    </label>
+                                    <br>
+                                    <ol type="A">
+                                        <li>
+                                            <input type="radio" name="<%= direction[i].question[j]._id %>"
+                                                id="a<%= direction[i].question[j]._id %> " value="A">
+                                            <label class="option" for="a<%= direction[i].question[j]._id %> ">
+                                                <%- direction[i].question[j].a %>
+                                            </label>
+                                        </li>
+                                        <!-- <br> -->
+                                        <li>
+
+                                            <input type="radio" name="<%= direction[i].question[j]._id %>"
+                                                id="b<%= direction[i].question[j]._id %> " value="B">
+                                            <label class="option" for="b<%= direction[i].question[j]._id %> ">
+                                                <%- direction[i].question[j].b %>
+                                            </label>
+                                        </li>
+                                        <!-- <br> -->
+                                        <li>
+                                            <input type="radio" name="<%= direction[i].question[j]._id %>"
+                                                id="c<%= direction[i].question[j]._id %> " value="C">
+                                            <label class="option" for="c<%= direction[i].question[j]._id %> ">
+                                                <%- direction[i].question[j].c %>
+                                            </label>
+                                        </li>
+                                        <!-- <br> -->
+                                        <li>
+                                            <input type="radio" name="<%= direction[i].question[j]._id %>"
+                                                id="d<%= direction[i].question[j]._id %> " value="D">
+                                            <label class="option" for="d<%= direction[i].question[j]._id %> ">
+                                                <%- direction[i].question[j].d %>
+                                            </label>
+                                        </li>
+                                        <% if (test.numOfOptions===5) { %>
+                                            <li>
+                                                <input type="radio" name="<%= direction[i].question[j]._id %>"
+                                                    id="e<%= direction[i].question[j]._id %> " value="E">
+                                                <label class="option" for="e<%= direction[i].question[j]._id %> ">
+                                                    <%- direction[i].question[j].e %>
+                                                </label>
+                                            </li>
+
+                                            <% } %>
+
+                                                <!-- <br> Rough Print: d<%#= direction[i].question[j]._id %> -->
+                                                <!-- <br> -->
+
+                                                <input type="radio" name="<%= direction[i].question[j]._id %>"
+                                                    id="not<%= direction[i].question[j]._id %> " value="n" checked>
+                                                <label class="option" for="not<%= direction[i].question[j]._id %> ">
+                                                    No Attempt
+                                                </label>
+                                    </ol>
+                                </li>
+
+
+                                <% } %>
+                                    </p>
+
+                                    <% } %>
+                                        <button type="submit" class="sbutton">Submit Test</button>
+                    </form>
+
+                </ol>
+
+                <div class="Notice">
+                    <div class="Disclaimer">
+                        Disclaimer: While gulzari.in uses reasonable efforts to
+                        include
+                        accurate and up to date information in the Site, gulzari.in and gk.gulzari.in makes no
+                        warranties or
+                        representations as to the accuracy, correctness, product specifications, prices availability,
+                        reliability or otherwise with respect to such information, and assumes no liability or
+                        responsibility for any omissions or errors (including, without limitation, typographical errors
+                        and technical errors) in the content of the Site.
+                    </div>
+                    <div class="Copyrights">
+                        &copy; All Rights Reserved
+                    </div>
+                </div>
+
+
+        </body>
+        <%#- include('layouts/footer');-%>
+
+            <script>
+
+                // Display Timer
+                function startTimer(duration, display) {
+                    var timer = duration, minutes, seconds;
+                    setInterval(function () {
+                        minutes = parseInt(timer / 60, 10);
+                        seconds = parseInt(timer % 60, 10);
+
+                        minutes = minutes < 10 ? "0" + minutes : minutes;
+                        seconds = seconds < 10 ? "0" + seconds : seconds;
+
+                        display.textContent = minutes + ":" + seconds;
+
+                        if (--timer < 0) {
+                            timer = duration;
+                        }
+                    }, 1000);
+                }
+
+                window.onload = function () {
+                    var fiveMinutes = 60 * <%=test.duration%> -1,
+                        display = document.querySelector('#time');
+                    startTimer(fiveMinutes, display);
+                };
+
+                // Auto-Submit after Time Duration
+                window.setInterval(function () {
+                    document.getElementById("test").submit();
+                }, 1000 * 60 *<%=test.duration %>);
+            </script>
+            <script src="js/index.js"></script>
+
+</html>

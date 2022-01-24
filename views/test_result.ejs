@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/headGoogleAdsense');-%>
+    <%- include('layouts/header');-%>
+        <style>
+            #body1 {
+                font-family: 'Times New Roman', Times, serif;
+                font-size: 1.2rem;
+            }
+
+            .heading {
+                display: flex;
+                font-family: 'Times New Roman', Times, serif;
+                font-weight: bold;
+                font-size: 1.4rem;
+                /* justify-content: center; */
+            }
+
+            .heading .h1 {
+                font-size: 1.4rem;
+                font-weight: bold;
+            }
+
+            .heading .h2 {
+                font-size: 1.4rem;
+                padding: 0rem 0.5rem;
+            }
+
+            .testDetail {
+                display: flex;
+                justify-content: space-between;
+
+            }
+
+            .testMessage {
+                display: flex;
+                font-size: 1.2rem;
+                font-weight: bold;
+            }
+
+            .testMessage #message {
+                padding: 0rem 0.5rem;
+                font-weight: lighter;
+            }
+
+            #direction {
+                display: flex;
+                color: black;
+                font-size: 1.5rem;
+            }
+
+            #direction #d1 {
+                font-size: 1.5rem;
+                font-weight: bold;
+            }
+
+            #direction #d2 {
+                font-size: 1.5rem;
+
+                padding: 0rem 0.5rem;
+                color: black;
+            }
+
+            #result-box {
+                border: 0.1rem solid sienna;
+            }
+
+            .result {
+                font-size: 1.5rem;
+
+                display: flex;
+                color: saddlebrown;
+            }
+
+            .result .r1 {
+                font-weight: bold;
+            }
+
+            .result .r2 {
+                padding: 0rem 0.5rem;
+                color: black;
+
+            }
+
+            .notAttempted {
+                background-color: skyblue;
+            }
+
+            .correct {
+                /* background-color: green; */
+                background-color: greenyellow;
+                background-color: rgb(130, 214, 5);
+            }
+
+            .incorrect {
+                background-color: tomato;
+            }
+
+            .question {
+                color: black;
+                font-size: 1.5rem;
+            }
+
+            .question .option {
+                color: black;
+            }
+
+            /* .Disclaimer {
+                font-size: 1.1rem;
+                background-color: brown;
+                color: white;
+            } */
+        </style>
+
+        <body style="background-color: cornsilk; font-family: 'Times New Roman', Times, serif;">
+
+            <div id="body1">
+                <div class="heading">
+                    <span class="h1"> Test Title: </span> <span class="h2">
+                        <%- test.title %>
+                    </span>
+                </div>
+                <div class="testDetail">
+
+                    <span>No. of Options:
+                        <%= test.numOfOptions %>
+                    </span><span>Time Duration:
+                        <%= test.duration %> minutes
+                    </span> <span>Test Type:
+                        <% if (test.type===1) { %>
+                            Full Length Test
+                            <% } else { %>
+                                Sectional Test
+
+                                <% } %>
+                    </span>
+                </div>
+                <div class="testMessage">
+                    <!-- <span> Message: </span> -->
+                    <span id="message">
+                        <%#- test.message %>
+                    </span>
+                </div>
+                <!-- <br> -->
+                <div id="result-box">
+                    <div id="result">
+                        <span><b>Result</b></span>
+                        <ul>
+                            <li> Number of Correct Answers: <%= correct %>
+                            </li>
+
+                            <li> Number of Incorrect Answers: <%= wrong %>
+                            </li>
+                            <li> Number of Unattempted Questions: <%= unattempted %>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <h4>Solution</h4>
+                <%#= let ctr=0 %>
+                    <ol>
+                        <%#= let ctr=0 %>
+                            <% for( let i=0,ctr=0; i < direction.length; i++ ) { %>
+
+                                <p>
+                                <div id="direction">
+                                    <span id="d1">
+                                        Direction:</span> <span id="d2">
+                                        <%- direction[i].direction %>
+                                    </span>
+                                </div>
+                                <% for( let j=0; j < direction[i].question.length; j++ ) { %>
+                                    <li class="question">
+                                        <%- direction[i].question[j].question %>
+                                            <ol type="A">
+                                                <li class="option">
+                                                    <%- direction[i].question[j].a %>
+                                                </li>
+                                                <li class="option">
+                                                    <%- direction[i].question[j].b %>
+                                                </li>
+                                                <li class="option">
+                                                    <%- direction[i].question[j].c %>
+                                                </li>
+                                                <li class="option">
+                                                    <%- direction[i].question[j].d %>
+                                                </li>
+                                                <% if (test.numOfOptions===5) { %>
+                                                    <li class="option">
+                                                        <%- direction[i].question[j].e %>
+                                                    </li>
+                                                    <% } %>
+                                            </ol>
+
+
+                                            <!-- <br> -->
+                                            <% if (user_ans[ctr]==='n' ) { %>
+                                                <div class="notAttempted">
+                                                    <div class="result">
+                                                        <span class="r1"> Your Answer: </span><span class="r2">
+                                                            <%# if (user_ans[ctr++]==='n' ) { %>
+                                                                You did <b style="color:blue;">NOT</b> attempt this
+                                                                question
+                                                                <%# } else { %>
+                                                                    <%#= user_ans[ctr-1] %>
+                                                                        <%# } %>
+                                                        </span>
+                                                        <%#= ctr+=1 %>
+                                                            <% ctr=ctr+1 %>
+                                                    </div>
+                                                </div>
+
+                                                <% } else if (user_ans[ctr]===direction[i].question[j].ans) { %>
+                                                    <div class="correct">
+                                                        <div class="result">
+                                                            <span class="r1"> Your Answer: </span><span class="r2">
+                                                                <%# if (user_ans[ctr++]==='n' ) { %>
+                                                                    <!-- You did <b style="color:blue;">NOT</b> attempt this question -->
+                                                                    <%# } else { %>
+                                                                        <%= user_ans[ctr++] %>
+                                                                            <%# } %>
+                                                            </span>
+                                                            <%#= ctr+=1 %>
+
+                                                        </div>
+
+
+                                                    </div>
+                                                    <% } else { %>
+                                                        <div class="incorrect">
+                                                            <div class="result">
+                                                                <span class="r1"> Your Answer: </span><span class="r2">
+                                                                    <%# if (user_ans[ctr++]==='n' ) { %>
+                                                                        <!-- You did <b style="color:blue;">NOT</b> attempt this question -->
+                                                                        <%# } else { %>
+                                                                            <%= user_ans[ctr++] %>
+                                                                                <%# } %>
+                                                                </span>
+                                                                <%#= ctr+=1 %>
+
+                                                            </div>
+
+                                                        </div>
+                                                        <% } %>
+
+                                                            <!-- <div class="result">
+                                                <span class="r1"> Your Answer: </span><span class="r2">
+                                                    <%# if (user_ans[ctr++]==='n' ) { %>
+                                                        You did <b style="color:blue;">NOT</b> attempt this question
+                                                        <%# } else { %>
+                                                            <%#= user_ans[ctr-1] %>
+                                                                <%# } %>
+                                                </span>
+                                                <%#= ctr+=1 %>
+
+                                            </div> -->
+
+                                                            <div class="result">
+                                                                <span class="r1">Correct Answer</span>: <span
+                                                                    class="r2">
+                                                                    <%= direction[i].question[j].ans %>
+                                                                </span>
+
+                                                            </div>
+                                                            <div class="result">
+                                                                <span class="r1">Solution</span>: <span class="r2">
+                                                                    <%- direction[i].question[j].solution %>
+                                                                </span>
+
+                                                            </div>
+
+
+
+
+                                    </li>
+
+                                    <% } %>
+
+                                        </p>
+
+                                        <% } %>
+                    </ol>
+            </div>
+            <div class="Notice">
+                <div class="Disclaimer">
+                    Disclaimer: While gulzari.in and gk.gulzari.in uses reasonable efforts to
+                    include
+                    accurate and up to date information in the Site, gulzari.in and gk.gulzari.in makes no
+                    warranties or
+                    representations as to the accuracy, correctness, product specifications, prices availability,
+                    reliability or otherwise with respect to such information, and assumes no liability or
+                    responsibility for any omissions or errors (including, without limitation, typographical errors
+                    and technical errors) in the content of the Site.
+                </div>
+                <div class="Copyrights">
+                    &copy; All Rights Reserved
+                </div>
+            </div>
+
+        </body>
+        <%#- include('layouts/footer');-%>
+            <script src="js/index.js"></script>
+
+</html>

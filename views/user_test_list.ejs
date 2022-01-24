@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<%- include('layouts/headGoogleAdsense');-%>
+    <%- include('layouts/header');-%>
+        <style>
+            * {
+                margin: 0rem 0rem;
+                /* padding: 0rem 0rem; */
+            }
+
+            .detail {
+                font-size: 1.0rem;
+                display: flex;
+                justify-content: space-around;
+                color: sienna;
+                font-size: 0.95rem;
+                margin: 0.25rem 0rem;
+                padding: 0rem 0rem;
+            }
+
+            .field {
+                padding-right: 0.25rem;
+                font-weight: bold;
+            }
+
+            .value {
+                padding-left: 0.25rem;
+                font-style: italic;
+            }
+
+            .search_heading {
+                /* display: flex; */
+                justify-content: space-evenly;
+                text-align: center;
+                font-size: 1rem;
+                font-weight: bold;
+            }
+
+            .search {
+                display: flex;
+                justify-content: space-evenly;
+                margin: 0.105rem 0.25rem;
+                padding: 0.25rem 0rem;
+                border-top: 0.1rem solid;
+                border-bottom: 0.1rem solid;
+                font-size: 0.85rem;
+                font-weight: bold;
+            }
+
+            /* For Submit Button */
+            .bu {
+
+                text-align: center;
+            }
+
+            .attribute {
+                display: flex;
+                justify-content: space-between;
+            }
+
+
+            .test a {
+                text-decoration: none;
+                color: chocolate;
+                padding: 0rem 2rem;
+            }
+
+            .heading {
+                color: saddlebrown;
+            }
+
+            .note {
+                color: blue;
+                font-size: 0.8rem;
+                font-style: italic;
+            }
+
+            .testList {
+                /* display: flex; */
+                font-size: 1.0rem;
+                color: brown;
+                flex-direction: row;
+            }
+
+            .testList .testListLi {
+                display: flex;
+            }
+
+            /* .testList li {
+                display: flex;
+                list-style: circle;
+            } */
+
+            .testList .testListLi .tl2 {
+                font-size: 1.0rem;
+                padding: 0rem 0.8rem;
+                color: tomato;
+            }
+
+            .testList li a {
+                text-decoration: none;
+                font-weight: bold;
+                color: black;
+
+            }
+
+            /* .testList li a {} */
+        </style>
+
+        <body style="background-color: cornsilk;">
+            <!-- Navigation-->
+            <%- include('layouts/navbar');-%>
+
+
+
+
+                <span>
+                    <!-- Test Type: -->
+                </span>
+
+                <div>
+                    <!-- <a class="testType" href="/testTaker/tests/sectional">Sectional Tests</a>
+                    <a class="testType" href="/testTaker/tests/fl">Full-Length Tests</a>
+                    <a class="testType" href="/testTaker/tests">All Tests</a> -->
+                </div>
+                <%#= class %>
+                    <div class="detail">
+                        <div class="attribute">
+                            <span class="field"> Class: </span>
+                            <!-- 'class1' is used instead of 'class' because 'class' is a RESERVED KEYWORD in CSS and Create PROBLEM in .ejs file -->
+
+                            <% if (class1==="0" ) { %>
+                                <span class="value"> All</span>
+
+                                <% } else { %>
+                                    <span class="value">
+                                        <%= class1 %>th
+                                    </span>
+                                    <% } %>
+                        </div>
+                        <div class="attribute"><span class="field">Subject:</span>
+                            <% if (subject==="0" ) { %>
+                                <span class="value">All</span>
+
+                                <% } else if (subject==="1" ) { %>
+                                    <span class="value">Geography</span>
+
+                                    <% } else if (subject==="2" ) { %>
+                                        <span class="value">History</span>
+                                        <% } else if (subject==="3" ) { %>
+                                            <span class="value">Civics</span>
+                                            <% } else if (subject==="4" ) { %>
+                                                <span class="value">Science</span>
+                                                <% } else if (subject==="5" ) { %>
+                                                    <span class="value">Economics</span>
+                                                    <% } else { %>
+                                                        <span class="value">None</span>
+                                                        <% } %>
+                        </div>
+                        <div class="attribute"> <span class="field"> Chapter:</span>
+                            <% if (chapter==="0" ) { %>
+                                <span class="value">All</span>
+                                <% } else { %>
+                                    <span class="value">
+                                        <%= chapter %>
+                                    </span>
+                                    <% } %>
+                        </div>
+                    </div>
+                    <div class="search_heading">
+                        Search
+                        <h4 class="note"> (Type appropriate values in the fields: 'Class', 'Subject' and 'Chapter' and
+                            click
+                            'Submit' to get a list of tests having these attributes)</h4>
+
+                    </div>
+
+                    <div class="search">
+
+                        <form action="" method='POST'>
+                            <div class="attribute">
+                                <span class="field">
+                                    <label for="class">Class: </label></span>
+                                <span class="value">
+                                    <select name="class" id="class">
+                                        <option value="0" <% if (class1==="0" ) { %>
+                                            selected
+                                            <% } %>>All
+                                        </option>
+                                        <option value="6" <% if (class1==="6" ) { %>
+                                            selected
+                                            <% } %>>VI
+                                        </option>
+                                        <option value="7" <% if (class1==="7" ) { %>
+                                            selected
+                                            <% } %>>VII
+                                        </option>
+                                        <option value="8" <% if (class1==="8" ) { %>
+                                            selected
+                                            <% } %>>VIII
+                                        </option>
+                                        <option value="9" <% if (class1==="9" ) { %>
+                                            selected
+                                            <% } %>>IX
+                                        </option>
+                                        <option value="10" <% if (class1==="10" ) { %>
+                                            selected
+                                            <% } %>>X
+                                        </option>
+                                        <option value="11" <% if (class1==="11" ) { %>
+                                            selected
+                                            <% } %>>XI
+                                        </option>
+                                        <option value="12" <% if (class1==="12" ) { %>
+                                            selected
+                                            <% } %>>XII
+                                        </option>
+                                    </select></span>
+                            </div>
+                            <div class="attribute">
+                                <span class="field">
+                                    <label for="subject">Subject: </label>
+                                </span>
+                                <span class="value"><select name="subject" id="subject">
+                                        <option value="0" <% if (subject==="0" ) { %>
+                                            selected
+                                            <% } %>>All
+                                        </option>
+                                        <option value="1" <% if (subject==="1" ) { %>
+                                            selected
+                                            <% } %>>Geography
+                                        </option>
+                                        <option value="2" <% if (subject==="2" ) { %>
+                                            selected
+                                            <% } %>>History
+                                        </option>
+                                        <option value="3" <% if (subject==="3" ) { %>
+                                            selected
+                                            <% } %>>Civics
+                                        </option>
+                                        <option value="4" <% if (subject==="4" ) { %>
+                                            selected
+                                            <% } %>>Science
+                                        </option>
+                                        <option value="5" <% if (subject==="5" ) { %>
+                                            selected
+                                            <% } %>>Economics
+                                        </option>
+                                    </select></span>
+                            </div>
+                            <div class="attribute">
+                                <span class="field">
+                                    <label for="chapter">Chapter (Type 0 (zero) to get ALL Chapters): </label>
+                                </span>
+                                <span class="value">
+                                    <input type="number" name="chapter" id="chapter" value="<%= (" 0"===chapter? "0" :
+                                        chapter) %>">
+                                </span>
+                            </div>
+
+                            <div class="bu"><button type="submit">Submit</button></div>
+
+                            <!-- <%# if (errors) { %>
+                        <ul>
+                            <%# for( let i=0; i < errors.length; i++ ) { %>
+                                <li>
+                                    <%#= errors[i].msg %>
+                                </li>
+
+                                <%# } %>
+                        </ul>
+
+                        <%# } %> -->
+
+                        </form>
+                    </div>
+
+                    <!-- <h3><a href="/testTaker/tests/fl">Full-Length Tests</a></h3> -->
+                    <br>
+                    <h3 class="heading">
+                        <%= title %>
+                    </h3>
+                    <div class="note">(Click on a test name given below to start the test)</div>
+
+                    <ul class="testList">
+                        <% for( let i=test_list.length-1; i>=0; i-- ) { %>
+                            <%# for( let i=0; i<test_list.length; i++ ) { %>
+
+                                <li>
+                                    <u>
+                                        <div class="testListLi"><span class="tl1"><a
+                                                    href="/testTaker<%=test_list[i].url%>">
+                                                    <%- test_list[i].title %>
+                                            </span>
+                                            <!-- <span class="tl2"> (# Options: <%#= test_list[i].numOfOptions %>)</span> -->
+                                            <span class="tl2"> (<%= test_list[i].duration %> minutes)</span>
+                                            </a>
+                                        </div>
+                                    </u>
+                                </li>
+
+
+                                <% } %>
+                                    <%# test.forEach(test_list=> { %>
+                                        <!-- <li><a href="test.url"><%#= test.title %> </a></li> -->
+
+                                        <%# }) %>
+                                            <% if (test_list.length===0) { %>
+                                                <li>There are no tests</li>
+
+                                                <% } %>
+                    </ul>
+
+        </body>
+        <%#- include('layouts/footer');-%>
+            <script src="js/index.js"></script>
+
+</html>

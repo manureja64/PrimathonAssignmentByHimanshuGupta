@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<%- include('layouts/head');-%>
+    <%- include('layouts/header');-%>
+
+        <body>
+            <!-- Navigation-->
+            <%- include('layouts/navbar');-%>
+                <h1>
+                    <%= title %>
+                </h1>
+                <hr>
+
+                <form action="" method="post">
+                    <div>
+                        <ul>
+                            <input type="hidden" name="test" , required="true" ,
+                                value="<%= (null===question?'':question.test._id) %>">
+                            <input type="hidden" name="direction" ,required="true" ,
+                                value="<%= (null===question?'':question.direction._id) %>">
+
+                            <li>
+                                <label for="question">Question: </label>
+                                <textarea id="question" ,placeholder="Question" , name="question" , required="true" ,
+                                    value="<%= (null===question?'':question.question) %>"><%= (null===question?'':question.question) %></textarea>
+                                <script>
+                                    $('#question').summernote({
+                                        placeholder: 'Question',
+                                        tabsize: 2,
+                                        height: 80
+                                    });
+                                </script>
+                            </li>
+                            <!-- <li>
+                            <label for="image">Upload Image</label>
+                            <input type="file" id="image" name="image"
+                                value="<%#= (null===question?'':question.img.data) %>">
+                        </li> -->
+                            <li>
+                                <label for="a">Option A: </label>
+                                <textarea id="a" , placeholder="Option A" , name="a" , required="true" ,
+                                    value="<%= (null===question?'':question.a) %>"><%= (null===question?'':question.a) %></textarea>
+                                <script>
+                                    $('#a').summernote({
+                                        placeholder: 'Option a',
+                                        tabsize: 2,
+                                        height: 50
+                                    });
+                                </script>
+                            </li>
+                            <li>
+                                <label for="b">Option B: </label>
+                                <textarea id="b" , placeholder="Option B" , name="b" , required="true" ,
+                                    value="<%= (null===question?'':question.b) %>"><%= (null===question?'':question.b) %></textarea>
+                                <script>
+                                    $('#b').summernote({
+                                        placeholder: 'Option b',
+                                        tabsize: 2,
+                                        height: 50
+                                    });
+                                </script>
+                            </li>
+                            <li>
+                                <label for="c">Option C: </label>
+                                <textarea id="c" , placeholder="Option C" , name="c" , required="true" ,
+                                    value="<%= (null===question?'':question.c) %>"><%= (null===question?'':question.c) %></textarea>
+                                <script>
+                                    $('#c').summernote({
+                                        placeholder: 'Option c',
+                                        tabsize: 2,
+                                        height: 50
+                                    });
+                                </script>
+                            </li>
+                            <li>
+                                <label for="d">Option D: </label>
+                                <textarea id="d" , placeholder="Option D" , name="d" , required="true" ,
+                                    value="<%= (null===question?'':question.d) %>"><%= (null===question?'':question.d) %></textarea>
+                                <script>
+                                    $('#d').summernote({
+                                        placeholder: 'Option d',
+                                        tabsize: 2,
+                                        height: 50
+                                    });
+                                </script>
+                            </li>
+                            <% if (numOfOptions===5) { %>
+                                <li>
+                                    <label for="e">Option E: </label>
+                                    <textarea id="e" , placeholder="Option E" , name="e" , required="true" ,
+                                        value="<%= (null===question?'':question.e) %>"><%= (null===question?'':question.e) %></textarea>
+                                    <script>
+                                        $('#e').summernote({
+                                            placeholder: 'Option e',
+                                            tabsize: 2,
+                                            height: 50
+                                        });
+                                    </script>
+
+                                </li>
+
+                                <% } %>
+                                    <li>
+                                        <label for="ans">Ans: </label>
+                                        <% if (!question) { %>
+                                            <!-- if question is null. This is for Creating a Question -->
+                                            <select name="ans" id="ans">
+                                                <option value="A">A</option>
+                                                <option value="B">B</option>
+                                                <option value="C">C</option>
+                                                <option value="D">D</option>
+                                                <% if (numOfOptions===5) { %>
+                                                    <option value="E">E</option>
+                                                    <% } %>
+
+                                            </select>
+                                            <% } else { %>
+                                                <!-- If question is NOT null. This is for Updating a Question and handling errors -->
+                                                <select name="ans" id="ans">
+                                                    <option value="A" <% if ((question.ans==="A" || question.ans==="a"
+                                                        )) { %>
+                                                        selected
+                                                        <% } %>>A
+                                                    </option>
+                                                    <option value="B" <% if ((question.ans==="B" || question.ans==="b"
+                                                        )) { %>
+                                                        selected
+                                                        <% } %>>B
+                                                    </option>
+                                                    <option value="C" <% if ((question.ans==="C" || question.ans==="c"
+                                                        )) { %>
+                                                        selected
+                                                        <% } %>>C
+                                                    </option>
+                                                    <option value="D" <% if ((question.ans==="D" || question.ans==="d"
+                                                        )) { %>
+                                                        selected
+                                                        <% } %>>D
+                                                    </option>
+                                                    <% if (numOfOptions===5) { %>
+                                                        <option value="E" <% if ((question.ans==="E" ||
+                                                            question.ans==="e" )) { %>
+                                                            selected
+                                                            <% } %>>E
+                                                        </option>
+                                                        <%# } %>
+
+                                                </select>
+                                                <% } %>
+
+                                                    <% } %>
+
+
+                                    </li>
+                                    <li>
+                                        <label for="solution">Solution: </label>
+                                        <textarea id="solution" , placeholder="Solution" , name="solution" ,
+                                            required="true" ,
+                                            value="<%= (null===question?'':question.solution) %>"><%= (null===question?'':question.solution) %></textarea>
+                                        <script>
+                                            $('#solution').summernote({
+                                                placeholder: 'Solution',
+                                                tabsize: 2,
+                                                height: 200
+                                            });
+                                        </script>
+
+                                    </li>
+
+                        </ul>
+                        <button type="submit">Submit</button>
+                    </div>
+                </form>
+
+        </body>
+
+        <script src="js/index.js"></script>
+
+</html>
